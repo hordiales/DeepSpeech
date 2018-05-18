@@ -17,7 +17,7 @@ import_array();
 %apply (float** ARGOUTVIEWM_ARRAY2, int* DIM1, int* DIM2) {(float** aMfcc, int* aNFrames, int* aFrameLen)};
 
 %typemap(in, numinputs=0) ModelState **retval (ModelState *ret) {
-  ret = nullptr;
+  ret = NULL;
   $1 = &ret;
 }
 
@@ -27,7 +27,7 @@ import_array();
 }
 
 %typemap(in, numinputs=0) StreamingState **retval (StreamingState *ret) {
-  ret = nullptr;
+  ret = NULL;
   $1 = &ret;
 }
 

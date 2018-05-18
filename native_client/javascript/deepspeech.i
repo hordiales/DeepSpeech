@@ -59,7 +59,7 @@ using namespace node;
 
 // convert double pointer retval in CreateModel to an output
 %typemap(in, numinputs=0) ModelState **retval (ModelState *ret) {
-  ret = nullptr;
+  ret = NULL;
   $1 = &ret;
 }
 
@@ -73,7 +73,7 @@ using namespace node;
 
 // convert double pointer retval in SetupStream to an output
 %typemap(in, numinputs=0) StreamingState **retval (StreamingState *ret) {
-  ret = nullptr;
+  ret = NULL;
   $1 = &ret;
 }
 

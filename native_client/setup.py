@@ -38,8 +38,8 @@ class BuildExtFirst(build):
                     ('build_clib', build.has_c_libraries),
                     ('build_scripts', build.has_scripts)]
 
-ds_ext = Extension('___init__',
-         ['python/__init__.i'],
+ds_ext = Extension('deepspeech._impl',
+         ['python/impl.i'],
          include_dirs = [numpy_include],
          library_dirs = list(map(lambda x: x.strip(), os.getenv('MODEL_LDFLAGS', '').split('-L')[1:])),
          libraries = list(map(lambda x: x.strip(), os.getenv('MODEL_LIBS', '').split('-l')[1:])))

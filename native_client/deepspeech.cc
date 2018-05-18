@@ -266,8 +266,9 @@ void
 StreamingState::processMfccWindow(const vector<float>& buf)
 {
   auto start = buf.begin();
-  while (start != buf.end()) {
-    unsigned int next_copy_amount = std::min(std::distance(start, buf.end()), (long)(N_STEPS_PER_BATCH*MFCC_FEATS_PER_TIMESTEP - batch_buffer.size()));
+  auto end = buf.end();
+  while (start != end) {
+    unsigned int next_copy_amount = std::min<unsigned int>(std::distance(start, end), (unsigned int)(N_STEPS_PER_BATCH*MFCC_FEATS_PER_TIMESTEP - batch_buffer.size()));
     batch_buffer.insert(batch_buffer.end(), start, start + next_copy_amount);
     start += next_copy_amount;
     assert(batch_buffer.size() <= N_STEPS_PER_BATCH*MFCC_FEATS_PER_TIMESTEP);
